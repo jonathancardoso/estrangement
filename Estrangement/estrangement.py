@@ -438,7 +438,8 @@ def ECA(dataset_dir='./data', results_filename= "matched_labels.log", tolerance=
         snapstats.Size[t] = g1.size(weight='weight')
         snapstats.NumComponents[t] = nx.number_connected_components(g1)
         if g1.number_of_nodes > 0:
-            snapstats.LargestComponentsize[t] = len(nx.connected_components(g1)[0])
+            #    snapstats.LargestComponentsize[t] = len(nx.connected_components(g1)[0])
+442         snapstats.LargestComponentsize[t] = len(sorted(nx.connected_component_subgraphs(g1), key = len, reverse=True)[0])
         else:
             snapstats.LargestComponentsize[t] = 0
 
